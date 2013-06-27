@@ -23,7 +23,8 @@ public class HttpRequest extends AsyncTask<Void,Void, Void> {
 			HttpResponse response = client.execute(getRequest);
 			HttpEntity entity = response.getEntity();
 			String responseText = EntityUtils.toString(entity);
-			System.out.println(responseText.substring(0, 100));
+			Parser par = new Parser(responseText, null,null);
+			par.parse();
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
