@@ -6,6 +6,7 @@
     <string name="hello_world">Hello kervala!</string>
     <string name="test">test</string>
     <string name="category_prompt">airchiet kategoria:</string>
+    <string name="price_prompt">airchiet fasi:</string>
     
     <string-array name="category_array">
         <item>kvebis obieqtebi</item>
