@@ -7,14 +7,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
 	private Spinner spinner1;
 	private Button button1;
-	private TextView textPrice;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +25,6 @@ public class MainActivity extends Activity {
 
 	public void addListenerOnSpinnerItemSelection() {
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
-		textPrice = (TextView) findViewById(R.id.text1);
 		spinner1.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 	}
 
@@ -55,9 +52,8 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void test(View v) {
+	//public void test(View v) {
 	//	HttpRequest request = new HttpRequest();
 	//	request.execute();
-	}
-
+	//}
 }

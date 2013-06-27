@@ -12,23 +12,17 @@
         android:entries="@array/category_array"
         android:prompt="@string/category_prompt" />
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/price_prompt" />
-    
-    <EditText 
+    <EditText
         android:id="@+id/editText1"
+        android:hint="@string/hint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:text="@string/test" />
+        android:text="@string/pass_values" />
 
 </LinearLayout>
