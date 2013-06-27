@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello kervala!</string>
     <string name="test">test</string>
+    <string name="category_prompt">აირჩიეთ კატეგორია:</string>
     
     <string-array name="category_array">
         <item>კვების ობიექტები</item>
