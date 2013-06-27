@@ -12,16 +12,18 @@ import org.apache.http.util.EntityUtils;
 import android.os.AsyncTask;
 
 public class HttpRequest extends AsyncTask<Void,Void, Void> {
+	
+	private String link = "http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&Itemid=1&lang=ka";
 
 	@Override
 	protected Void doInBackground(Void... params) {
 		DefaultHttpClient client = new DefaultHttpClient();
-		HttpGet getRequest = new HttpGet("http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&Itemid=1&lang=ka");
+		HttpGet getRequest = new HttpGet(link);
 		try {
 			HttpResponse response = client.execute(getRequest);
 			HttpEntity entity = response.getEntity();
 			String responseText = EntityUtils.toString(entity);
-			System.out.println(responseText.substring(0, 40));
+			System.out.println(responseText.substring(0, 100));
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
