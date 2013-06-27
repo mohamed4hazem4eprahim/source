@@ -5,19 +5,19 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello kervala!</string>
     <string name="test">test</string>
-    <string name="category_prompt">აირჩიეთ კატეგორია:</string>
+    <string name="category_prompt">airchiet kategoria:</string>
     
     <string-array name="category_array">
-        <item>კვების ობიექტები</item>
-        <item>გართობა</item>
-        <item>ჯანმრთელობა და სილამაზე</item>
-        <item>ტურიზმი და სასტუმროები</item>
-        <item>ბავშვებს</item>
-        <item>წიგნები და ჟურნალები</item>
-        <item>საყოფაცხოვრებო ტექნიკა</item>
-        <item>სწავლა და განათლება</item>
-        <item>სხვა მომსახურებები</item>
-        <item>სხვა პროდუქცია</item>
+        <item>kvebis obieqtebi</item>
+        <item>gartoba</item>
+        <item>janmrteloba da silamaze</item>
+        <item>turizmi da sastumroebi</item>
+        <item>bavshvebs</item>
+        <item>wignebi da jurnalebi</item>
+        <item>sayofacxovrebo teqnika</item>
+        <item>swavla da ganatleba</item>
+        <item>sxva momsaxurebebi</item>
+        <item>sxva produqciა</item>
     </string-array>
 
 </resources>
