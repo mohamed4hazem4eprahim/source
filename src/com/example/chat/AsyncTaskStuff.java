@@ -11,12 +11,14 @@ import org.apache.http.util.EntityUtils;
 
 import android.os.AsyncTask;
 
-public class HttpRequest extends AsyncTask<Void,Void, Void> {
+import java.util.*;
+
+public class AsyncTaskStuff extends AsyncTask<Map,Void, Void> {
 	
 	private String link = "http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&Itemid=1&lang=ka";
 
 	@Override
-	protected Void doInBackground(Void... params) {
+	protected Void doInBackground(Map... params) {
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(link);
 		try {
