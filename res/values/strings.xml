@@ -5,5 +5,18 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello kervala!</string>
     <string name="test">test</string>
+    
+    <string-array name="category_array">
+        <item>კვების ობიექტები</item>
+        <item>გართობა</item>
+        <item>ჯანმრთელობა და სილამაზე</item>
+        <item>ტურიზმი და სასტუმროები</item>
+        <item>ბავშვებს</item>
+        <item>წიგნები და ჟურნალები</item>
+        <item>საყოფაცხოვრებო ტექნიკა</item>
+        <item>სწავლა და განათლება</item>
+        <item>სხვა მომსახურებები</item>
+        <item>სხვა პროდუქცია</item>
+    </string-array>
 
 </resources>
