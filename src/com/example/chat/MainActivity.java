@@ -1,17 +1,19 @@
 package com.example.chat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -19,7 +21,7 @@ public class MainActivity extends Activity {
 	private EditText editText1;
 	private Button button1;
 	
-	private List<Item> items;
+	private ArrayList<Item> items;
 	
 	HashMap<String, Object> map;
 
@@ -56,7 +58,16 @@ public class MainActivity extends Activity {
 	}
 	
 	public void setOffersInfo(List<Item> list) {
-		this.items = list;
+		this.items = (ArrayList<Item>) list;
+		callNewActivity();
+	}
+	
+	private void callNewActivity() {
+		Intent intent = new Intent(MainActivity.this, ShowOffers.class);
+		Bundle b = new Bundle();
+		b.putParcelableArrayList("A", (ArrayList<? extends Parcelable>) items);
+		intent.putExtras(b);
+		MainActivity.this.startActivity(intent);
 	}
 	
 	@Override

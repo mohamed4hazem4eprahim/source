@@ -2,36 +2,41 @@ package com.example.chat;
 
 import org.simpleframework.xml.Element;
 
-public class Item {
-	
-//	public Item(String id, String title, String description, String regPrice, String discPrice, String price, String percent, String sold, String pdown) {
-//		// TODO Auto-generated constructor stub
-//	}
+import android.os.Parcel;
+import android.os.Parcelable;
 
+public class Item implements Parcelable {
+
+	public Item() { ; };
+	
+	public Item(Parcel in) { 
+		readFromParcel(in);
+	}
+	
 	@Element
 	private String id;
 
 	@Element
 	private String title;
-	
+
 	@Element
 	private String link;
 
 	@Element
 	private String description;
-	
+
 	@Element
 	private String regPrice;
-	
+
 	@Element
 	private String discPrice;
-	
+
 	@Element
 	private String Price;
-	
+
 	@Element
 	private String Percent;
-	
+
 	@Element
 	private String Sold;
 
@@ -106,5 +111,45 @@ public class Item {
 	public void setSold(String sold) {
 		Sold = sold;
 	}
-	
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		 dest.writeString(id);
+		 dest.writeString(title);
+		 dest.writeString(link);
+		 dest.writeString(description);
+		 dest.writeString(regPrice);
+		 dest.writeString(discPrice);
+		 dest.writeString(Price);
+		 dest.writeString(Percent);
+		 dest.writeString(Sold);
+	}
+
+	private void readFromParcel(Parcel in) {
+		 id = in.readString();
+		 title = in.readString();
+		 link = in.readString();
+		 description = in.readString();
+		 regPrice = in.readString();
+		 discPrice = in.readString();
+		 Price = in.readString();
+		 Percent = in.readString();
+		 Sold = in.readString();
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+		public Item createFromParcel(Parcel in) {
+			return new Item(in);
+		}
+
+		public Item[] newArray(int size) {
+			return new Item[size];
+		}
+	};
 }

@@ -12,13 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ShowOffers extends Activity {
 
+	private ArrayList<Item> items;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_offers);
+		
+		Bundle b = this.getIntent().getExtras();
+		if(b != null) {
+			items = b.getParcelableArrayList("A");
+		}
 	}
 	
 	private class MyAdapter extends BaseAdapter {
