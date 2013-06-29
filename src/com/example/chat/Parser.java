@@ -21,10 +21,10 @@ import android.util.Log;
 
 public class Parser {
 	private String xml;
-	private String price;
+	private double price;
 	private String length;
 	
-	public Parser(String xml,String price,String length){
+	public Parser(String xml,Double price,String length){
 		this.xml = xml;
 		this.price = price;
 		this.length = length;
@@ -58,10 +58,19 @@ public class Parser {
 	        for (int i=0; i< nl.getLength(); i++) {
 	        	NodeList n = nl.item(i).getChildNodes();
 	        	Item item = new Item();
-	        	for (int j=0; j < 10;j++) {
-	        		item.setId(n.item(j).getTextContent());
+	        	if(Double.parseDouble(n.item(13).getTextContent())<price){
+	        		item.setId(n.item(1).getTextContent());
+	        		item.setTitle(n.item(3).getTextContent());
+	        		item.setLink(n.item(5).getTextContent());
+	        		item.setDescription(n.item(7).getTextContent());
+	        		item.setRegPrice(n.item(9).getTextContent());
+	        		item.setDiscPrice(n.item(11).getTextContent());
+	        		item.setPrice(n.item(13).getTextContent());
+	        		item.setPercent(n.item(15).getTextContent());
+	        		item.setSold(n.item(17).getTextContent());
+	        		itemList.add(item);
 	        	}
-	        	itemList.add(item);
+	        	
 	        }  		  
 		return itemList;
 	}

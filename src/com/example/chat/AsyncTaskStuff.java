@@ -22,14 +22,17 @@ public class AsyncTaskStuff extends AsyncTask<Map,Void, Void> {
 	protected Void doInBackground(Map... params) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param = params[0];
+		double price =  Double.parseDouble(param.get("price").toString());
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(link);
 		try {
 			HttpResponse response = client.execute(getRequest);
 			HttpEntity entity = response.getEntity();
 			String responseText = EntityUtils.toString(entity);
-			Parser par = new Parser(responseText, null,null);
+			Parser par = new Parser(responseText,price,null);
 			items =  par.parse();
+			System.out.println(items.size());
+			System.out.println("raodenobaaaaaaa");
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
