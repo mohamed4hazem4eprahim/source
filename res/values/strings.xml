@@ -7,7 +7,7 @@
     <string name="pass_values">monacemebis gadacema</string>
     <string name="hint">sheiyvanet fasi</string>
     <string name="category_prompt">airchiet kategoria:</string>
-    
+
     <string-array name="category_array">
         <item>kvebis obieqtebi</item>
         <item>gartoba</item>
@@ -20,5 +20,7 @@
         <item>sxva momsaxurebebi</item>
         <item>sxva produqciა</item>
     </string-array>
+
+    <string name="title_activity_show_offers">ShowOffers</string>
 
 </resources>

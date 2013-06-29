@@ -56,9 +56,4 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
-	//public void test(View v) {
-	//	HttpRequest request = new HttpRequest();
-	//	request.execute();
-	//}
 }
