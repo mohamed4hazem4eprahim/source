@@ -36,7 +36,6 @@ public class AsyncTaskStuff extends AsyncTask<Map,Void, Void> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 
