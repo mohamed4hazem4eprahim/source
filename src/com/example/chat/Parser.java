@@ -1,15 +1,13 @@
 package com.example.chat;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import android.util.Xml;
 
 
 
@@ -24,16 +22,35 @@ public class Parser {
 		this.length = length;
 	}
 	public String parse(){
+		System.out.println("aqvar");
 		
 		Serializer serializer = new Persister();
-
+		
+		System.out.println("aqvar");
 		try {
-			rss r = serializer.read(rss.class, xml);
-			System.out.println(r);
-			rss.Channel c = r.getChannel();
-			System.out.println(c);
-			System.out.println(c.getItems().get(0));
+			System.out.println("adasdas");
+			
+			
+			
+			System.out.println("momomomomomo");
+			
+			
+			System.out.println("aaaaa");
+
+			
+			xml = "<rss version=\"2.0\">  <channel><title>HotSale - HotSale ფასდაკლებები</title><description /><opt><serT>1372454846</serT><timeout>15</timeout> </opt><link>http://www.hotsale.ge/index.php?option=com_sobi2&catid=1&Itemid=1&lang=ka</link><lastBuildDate>Sat, 29 Jun 2013 01:27:26 +0400</lastBuildDate><generator>Sigsiu Online Business Index 2 FeedCreator</generator> <item><id>6729</id><title>მათთვის ვისაც მართვის მოწმობის აღება სურს. თეორიული და პრაქტიკული სრული კურსი VIP ცენტრში</title><link>http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=sobi2Details&sobi2Id=6729&Itemid=1&lang=ka</link><description><IMG src='http://hotsales.ge/images/com_sobi2/clients/6729_ico.jpg' /></description><regPrice>300</regPrice><discPrice>145</discPrice><Price>15</Price><Percent>52</Percent><Sold>36</Sold><pdown>1372620600</pdown> </item> </channel></rss>";
+			
+
+			Rss r = serializer.read(Rss.class, xml);
+			System.out.println(r.getchannel().size());
+			System.out.println(r.getchannel().get(0).getDescription());
+//			System.out.println("keko");
+//			System.out.println(r);
+//			rss.Channel c = r.getChannel();
+//			System.out.println(c);
+//			System.out.println(c.getItems().get(0));
 		} catch (Exception e) {
+			System.out.println("pirshi sheveci");
 			e.printStackTrace();
 		}
 		

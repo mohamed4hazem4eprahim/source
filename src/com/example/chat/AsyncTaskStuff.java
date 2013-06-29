@@ -15,10 +15,12 @@ import java.util.*;
 
 public class AsyncTaskStuff extends AsyncTask<Map,Void, Void> {
 	
-	private String link = "http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&Itemid=1&lang=ka";
+	private String link="http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&catid=4&Itemid=1&lang=ka";
 
 	@Override
 	protected Void doInBackground(Map... params) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param = params[0];
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(link);
 		try {
