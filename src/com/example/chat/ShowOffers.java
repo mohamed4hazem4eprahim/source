@@ -11,12 +11,14 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShowOffers extends Activity {
 
 	private ArrayList<Item> items;
+	private MyAdapter adapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,17 @@ public class ShowOffers extends Activity {
 		Bundle b = this.getIntent().getExtras();
 		if(b != null) {
 			items = b.getParcelableArrayList("A");
+			createList();
+		}
+	}
+	
+	private void createList() {
+		ListView listview = (ListView) findViewById(R.id.my_list);
+		adapter = new MyAdapter();
+		listview.setAdapter(adapter);
+		
+		for(int i=0; i < items.size(); i++) {
+			adapter.add(items.get(i));
 		}
 	}
 	
@@ -37,8 +50,8 @@ public class ShowOffers extends Activity {
 			return items.size();
 		}
 
-		public void add(String item) {
-			items.add(item);
+		public void add(Item item) {
+			//items.add(item);
 			notifyDataSetChanged();
 		}
 		
@@ -54,10 +67,8 @@ public class ShowOffers extends Activity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			if (convertView ==  null) 
-				convertView = View.inflate(ShowOffers.this, R.layout.list_item, null);
+			if (convertView ==  null) convertView = View.inflate(ShowOffers.this, R.layout.list_item, null);
 			((TextView)convertView.findViewById(R.id.text)).setText(getItem(position).toString());
-
 			return convertView;
 		}
 	}
