@@ -3,21 +3,43 @@ package com.example.chat;
 import org.simpleframework.xml.Element;
 
 public class Item {
+	
+//	public Item(String id, String title, String description, String regPrice, String discPrice, String price, String percent, String sold, String pdown) {
+//		// TODO Auto-generated constructor stub
+//	}
 
 	@Element
-	private int id;
+	private String id;
 
 	@Element
 	private String title;
 	
 	@Element
 	private String link;
+
+	@Element
+	private String description;
 	
-	public int getId() {
+	@Element
+	private String regPrice;
+	
+	@Element
+	private String discPrice;
+	
+	@Element
+	private String Price;
+	
+	@Element
+	private String Percent;
+	
+	@Element
+	private String Sold;
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -45,62 +67,44 @@ public class Item {
 		this.description = description;
 	}
 
-	public double getRegPrice() {
+	public String getRegPrice() {
 		return regPrice;
 	}
 
-	public void setRegPrice(double regPrice) {
+	public void setRegPrice(String regPrice) {
 		this.regPrice = regPrice;
 	}
 
-	public double getDiscPrice() {
+	public String getDiscPrice() {
 		return discPrice;
 	}
 
-	public void setDiscPrice(double discPrice) {
+	public void setDiscPrice(String discPrice) {
 		this.discPrice = discPrice;
 	}
 
-	public double getPrice() {
+	public String getPrice() {
 		return Price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		Price = price;
 	}
 
-	public double getPercent() {
+	public String getPercent() {
 		return Percent;
 	}
 
-	public void setPercent(double percent) {
+	public void setPercent(String percent) {
 		Percent = percent;
 	}
 
-	public double getSold() {
+	public String getSold() {
 		return Sold;
 	}
 
-	public void setSold(double sold) {
+	public void setSold(String sold) {
 		Sold = sold;
 	}
-
-	@Element
-	private String description;
-	
-	@Element
-	private double regPrice;
-	
-	@Element
-	private double discPrice;
-	
-	@Element
-	private double Price;
-	
-	@Element
-	private double Percent;
-	
-	@Element
-	private double Sold;
 	
 }
