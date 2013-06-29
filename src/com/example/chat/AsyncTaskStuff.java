@@ -9,19 +9,29 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 
 import java.util.*;
 
-public class AsyncTaskStuff extends AsyncTask<Map,Void, Void> {
+public class AsyncTaskStuff extends AsyncTask<Object, Void, List<Item>> {
 	
 	private String link="http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&catid=4&Itemid=1&lang=ka";
 	private List<Item> items;
+	private Map <String, Object> param; 
+	private Context mContext;
+	
+	public AsyncTaskStuff(Map<String, Object> map, Context applicationContext) {
+		//param = new HashMap<String, Object>();
+		param = map;
+		mContext = applicationContext;
+	}
+	
 	
 	@Override
-	protected Void doInBackground(Map... params) {
-		Map<String, Object> param = new HashMap<String, Object>();
-		param = params[0];
+	protected List<Item> doInBackground(Object... params) {
 		double price =  Double.parseDouble(param.get("price").toString());
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(link);
@@ -40,15 +50,19 @@ public class AsyncTaskStuff extends AsyncTask<Map,Void, Void> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		return null;
+		return items;
 	}
 	
 	@Override
-	protected void onPostExecute(Void v) {
-		
-
+	protected void onPostExecute(List<Item> v) {
+		//Intent newActivity = new Intent(mContext, ShowOffers.class);
+	//	Bundle a = new Bundle();
+		//a.
+		//newActivity.putExtra("a", value);
 	}
 	
+	public List<Item> getOffersInfo(){
+        return this.items;
+    }
 	
-
 }
