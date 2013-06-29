@@ -10,9 +10,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 
 import java.util.*;
 
@@ -55,14 +53,9 @@ public class AsyncTaskStuff extends AsyncTask<Object, Void, List<Item>> {
 	
 	@Override
 	protected void onPostExecute(List<Item> v) {
-		//Intent newActivity = new Intent(mContext, ShowOffers.class);
-	//	Bundle a = new Bundle();
-		//a.
-		//newActivity.putExtra("a", value);
+		super.onPostExecute(v);
+		MainActivity a = (MainActivity)mContext;
+		a.setOffersInfo(v);
 	}
-	
-	public List<Item> getOffersInfo(){
-        return this.items;
-    }
 	
 }
