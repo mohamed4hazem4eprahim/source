@@ -6,19 +6,19 @@ import com.example.chat.ShowOffers;
 import com.example.chat.R;
 
 import android.os.Bundle;
-import android.app.Activity;
+import android.app.ListActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class ShowOffers extends Activity {
+public class ShowOffers extends ListActivity {
 
 	private ArrayList<Item> items;
 	private MyAdapter adapter;
+	private ListView listview;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class ShowOffers extends Activity {
 	}
 	
 	private void createList() {
-		ListView listview = (ListView) findViewById(R.id.my_list);
+		listview = (ListView) findViewById(R.id.my_list);
 		adapter = new MyAdapter();
 		listview.setAdapter(adapter);
 		
@@ -43,7 +43,7 @@ public class ShowOffers extends Activity {
 	}
 	
 	private class MyAdapter extends BaseAdapter {
-		private ArrayList<String> items = new ArrayList<String>();
+		private ArrayList<Item> items = new ArrayList<Item>();
 		
 		@Override
 		public int getCount() {
@@ -51,7 +51,7 @@ public class ShowOffers extends Activity {
 		}
 
 		public void add(Item item) {
-			//items.add(item);
+			items.add(item);
 			notifyDataSetChanged();
 		}
 		
@@ -68,7 +68,13 @@ public class ShowOffers extends Activity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView ==  null) convertView = View.inflate(ShowOffers.this, R.layout.list_item, null);
-			((TextView)convertView.findViewById(R.id.text)).setText(getItem(position).toString());
+			Item item = (Item) getItem(position);
+			
+			TextView tv = (TextView) convertView.findViewById(R.id.text);
+			tv.setText(item.getTitle());
+
+			//ImageView iv = (ImageView) convertView.findViewById(R.id.image);
+			//iv.setImageBitmap(bm)
 			return convertView;
 		}
 	}
