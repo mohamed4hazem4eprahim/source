@@ -1,5 +1,7 @@
 package com.example.chat;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import com.example.chat.ShowOffers;
@@ -7,18 +9,18 @@ import com.example.chat.R;
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ShowOffers extends ListActivity {
 
 	private ArrayList<Item> items;
 	private MyAdapter adapter;
-	private ListView listview;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,6 @@ public class ShowOffers extends ListActivity {
 		}
 		
 		setListAdapter(adapter);
-		/*listview = (ListView) findViewById(R.id.list);
-		adapter = new MyAdapter();
-		listview.setAdapter(adapter);
-		*/
 	}
 	
 	private class MyAdapter extends BaseAdapter {
@@ -77,14 +75,33 @@ public class ShowOffers extends ListActivity {
 			TextView tv = (TextView) convertView.findViewById(R.id.text);
 			tv.setText(item.getTitle());
 			
+			String parsedLink = parsePictureLink(item.getDescription());
 			
+			Drawable d = LoadImageFromWebOperations(parsedLink);
 			
-			//ImageView iv = (ImageView) convertView.findViewById(R.id.image);
-			//iv.setImageBitmap(bm)
+			ImageView iv = (ImageView) convertView.findViewById(R.id.image);
+			iv.setImageDrawable(d);
 			return convertView;
 		}
 	}
-
+	
+	private static String parsePictureLink(String linkToParse) {
+		int linkStartIndex = 10;
+		int linkEndIndex = linkToParse.indexOf(".jpg")+4;
+		String cut = linkToParse.substring(0, linkEndIndex);
+		String newLink = cut.substring(linkStartIndex);
+		return newLink;
+	}
+	
+	private static Drawable LoadImageFromWebOperations(String url) {
+	    try {
+	        InputStream is = (InputStream) new URL(url).getContent();
+	        Drawable d = Drawable.createFromStream(is, "src name");
+	        return d;
+	    } catch (Exception e) {
+	        return null;
+	    }
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
