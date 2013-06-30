@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="MyParams">
+        <attr name="font_name" format="string"/>
+   	</declare-styleable>
+</resources>
