@@ -13,7 +13,9 @@ import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,7 +72,7 @@ public class ShowOffers extends ListActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView ==  null) convertView = View.inflate(ShowOffers.this, R.layout.list_item, null);
-			Item item = (Item) getItem(position);
+			final Item item = (Item) getItem(position);
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.text);
 			tv.setText(item.getTitle());
@@ -81,6 +83,19 @@ public class ShowOffers extends ListActivity {
 			
 			ImageView iv = (ImageView) convertView.findViewById(R.id.image);
 			iv.setImageDrawable(d);
+			
+			Button button = (Button) convertView.findViewById(R.id.button);
+			button.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					String link = item.getLink();
+					ReadMore task = new ReadMore(link, ShowOffers.this);
+					task.execute();
+				}
+			});
+			button.setText("Read More");
+			
 			return convertView;
 		}
 	}

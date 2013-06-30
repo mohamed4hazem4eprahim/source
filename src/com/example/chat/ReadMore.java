@@ -9,12 +9,18 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 public class ReadMore extends AsyncTask<Void, Void, Void> {
 
 	private String url;
 
+	public ReadMore(String link, Context ctx) {
+		
+	}
+	
+	
 	@Override
 	protected Void doInBackground(Void... params) {
 
@@ -39,7 +45,7 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 	}
 	
 	private String getTelephone(String response){
-		int tellStart = response.indexOf("ტელ");
+		int tellStart = response.indexOf("бѓўбѓ”бѓљ");
 		int startTag = 0;
 		int endTag = 0;
 		boolean temp1 = false;
@@ -67,7 +73,7 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 	
 	
 	private String getAddres(String response) {
-		int missStart = response.indexOf("მის:");
+		int missStart = response.indexOf("бѓ›бѓ�бѓЎ:");
 		int startTag = 0;
 		int endTag = 0;
 		boolean temp1 = false;

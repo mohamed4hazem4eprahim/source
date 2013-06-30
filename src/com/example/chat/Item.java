@@ -2,6 +2,7 @@ package com.example.chat;
 
 import org.simpleframework.xml.Element;
 
+import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
 
