@@ -40,9 +40,29 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 	
 	private String getTelephone(String response){
 		int tellStart = response.indexOf("ტელ");
+		int startTag = 0;
+		int endTag = 0;
+		boolean temp1 = false;
+		boolean temp2 = false;
+		for (int i = tellStart; i > 0; i--) {
+			if(response.charAt(i)=='>'){
+				endTag = i;
+				temp1=true;
+			}
+			if(response.charAt(i)=='<'){
+				startTag = i;
+				temp2=true;
+			}
+			if(temp1 && temp2){
+				break;
+			}
+		}
+		String tagStart = response.substring(startTag,endTag);
+		String tagEnd = tagStart.charAt(0) + '/' + tagStart.substring(1);
+		int missEnd = response.indexOf(tagEnd,tellStart);
+		String address = response.substring(tellStart,missEnd);
+		return address;
 		
-		
-		return null;
 	}
 	
 	
@@ -52,12 +72,14 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 		int endTag = 0;
 		boolean temp1 = false;
 		boolean temp2 = false;
-		for (int i = missStart; i < missStart + 1; i--) {
+		for (int i = missStart; i >0; i--) {
 			if(response.charAt(i)=='>'){
 				endTag = i;
+				temp1=true;
 			}
 			if(response.charAt(i)=='<'){
 				startTag = i;
+				temp2=true;
 			}
 			if(temp1 && temp2){
 				break;
@@ -65,7 +87,7 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 		}
 		
 		String tagStart = response.substring(startTag, endTag);
-		String tagEnd = response.charAt(0) + '/' + tagStart.substring(1);
+		String tagEnd = tagStart.charAt(0) + '/' + tagStart.substring(1);
 		int missEnd = response.indexOf(tagEnd,missStart);
 		String address = response.substring(missStart,missEnd);
 		return address;
