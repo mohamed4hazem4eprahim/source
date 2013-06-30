@@ -15,11 +15,11 @@ import android.os.AsyncTask;
 public class ReadMore extends AsyncTask<Void, Void, Void> {
 
 	private String url;
+	private String address;
+	private String telNumber;
 
 	public ReadMore(String link, Context ctx) {
 		url = link;
-		System.out.println(url);
-		System.out.println("linkiaaaaaaaaaaaaaa");
 	}
 	
 	
@@ -32,10 +32,10 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 			HttpResponse response = client.execute(getRequest);
 			HttpEntity entity = response.getEntity();
 			String responseText = EntityUtils.toString(entity);
-			String answer = getAddres(responseText);
-			String telNumber =  getTelephone(responseText);
-			System.out.println(answer);
-			System.out.println(telNumber);
+			address = getAddres(responseText);
+			telNumber =  getTelephone(responseText);
+			addressParser parser = new addressParser(address);
+			address = parser.parseAddress();
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,12 +68,11 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 		String tagStart = response.substring(startTag,endTag+1);
 		String tagEnd = tagStart.charAt(0) + "/" + tagStart.substring(1);
 		int missEnd = response.indexOf(tagEnd,tellStart);
-		String telNumber = response.substring(tellStart,missEnd);
+		String answer = response.substring(tellStart,missEnd);
 		System.out.println(telNumber);
-		return telNumber;
+		return answer;
 		
 	}
-	
 	
 	private String getAddres(String response) {
 		int missStart = response.indexOf("მის:");
@@ -97,9 +96,8 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 		String tagStart = response.substring(startTag, endTag+1);
 		String tagEnd = tagStart.charAt(0) + "/" + tagStart.substring(1);
 		int missEnd = response.indexOf(tagEnd,missStart);
-		String address = response.substring(missStart,missEnd);
-		System.out.println(address);
-		return address;
+		String answer = response.substring(missStart,missEnd);
+		return answer;
 	}
 
 }

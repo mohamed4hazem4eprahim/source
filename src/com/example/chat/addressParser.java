@@ -18,6 +18,7 @@ public class addressParser  {
 				answer += ch;
 			}
 		}
+		System.out.println(answer);
 		return answer;
 	}
 
