@@ -33,13 +33,17 @@ public class ShowOffers extends ListActivity {
 	}
 	
 	private void createList() {
-		listview = (ListView) findViewById(R.id.my_list);
 		adapter = new MyAdapter();
-		listview.setAdapter(adapter);
 		
 		for(int i=0; i < items.size(); i++) {
 			adapter.add(items.get(i));
 		}
+		
+		setListAdapter(adapter);
+		/*listview = (ListView) findViewById(R.id.list);
+		adapter = new MyAdapter();
+		listview.setAdapter(adapter);
+		*/
 	}
 	
 	private class MyAdapter extends BaseAdapter {
@@ -72,7 +76,9 @@ public class ShowOffers extends ListActivity {
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.text);
 			tv.setText(item.getTitle());
-
+			
+			
+			
 			//ImageView iv = (ImageView) convertView.findViewById(R.id.image);
 			//iv.setImageBitmap(bm)
 			return convertView;
