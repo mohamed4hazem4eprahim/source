@@ -17,7 +17,9 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 	private String url;
 
 	public ReadMore(String link, Context ctx) {
-		
+		url = link;
+		System.out.println(url);
+		System.out.println("linkiaaaaaaaaaaaaaa");
 	}
 	
 	
@@ -45,7 +47,7 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 	}
 	
 	private String getTelephone(String response){
-		int tellStart = response.indexOf("бѓўбѓ”бѓљ");
+		int tellStart = response.indexOf("ტელ");
 		int startTag = 0;
 		int endTag = 0;
 		boolean temp1 = false;
@@ -63,17 +65,18 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 				break;
 			}
 		}
-		String tagStart = response.substring(startTag,endTag);
-		String tagEnd = tagStart.charAt(0) + '/' + tagStart.substring(1);
+		String tagStart = response.substring(startTag,endTag+1);
+		String tagEnd = tagStart.charAt(0) + "/" + tagStart.substring(1);
 		int missEnd = response.indexOf(tagEnd,tellStart);
-		String address = response.substring(tellStart,missEnd);
-		return address;
+		String telNumber = response.substring(tellStart,missEnd);
+		System.out.println(telNumber);
+		return telNumber;
 		
 	}
 	
 	
 	private String getAddres(String response) {
-		int missStart = response.indexOf("бѓ›бѓ�бѓЎ:");
+		int missStart = response.indexOf("მის:");
 		int startTag = 0;
 		int endTag = 0;
 		boolean temp1 = false;
@@ -91,11 +94,11 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 				break;
 			}
 		}
-		
-		String tagStart = response.substring(startTag, endTag);
-		String tagEnd = tagStart.charAt(0) + '/' + tagStart.substring(1);
+		String tagStart = response.substring(startTag, endTag+1);
+		String tagEnd = tagStart.charAt(0) + "/" + tagStart.substring(1);
 		int missEnd = response.indexOf(tagEnd,missStart);
 		String address = response.substring(missStart,missEnd);
+		System.out.println(address);
 		return address;
 	}
 
