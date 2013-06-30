@@ -19,10 +19,11 @@ public class AsyncTaskStuff extends AsyncTask<Object, Void, List<Item>> {
 	private List<Item> items;
 	private Map <String, Object> param; 
 	private Context mContext;
-	private Map <String ,String> link;
+	private Map <String ,String> link ;
 	private String url;
 	
 	public AsyncTaskStuff(Map<String, Object> map, Context applicationContext) {
+		link = new HashMap<String, String>();
 		link.put("kvebis obieqtebi","http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&catid=3&Itemid=1&lang=ka");
 		link.put("gartoba","http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&catid=4&Itemid=1&lang=ka");
 		link.put("janmrteloba da silamaze","http://www.hotsale.ge/index.php?option=com_sobi2&sobi2Task=rss&no_html=1&catid=5&Itemid=1&lang=ka");
