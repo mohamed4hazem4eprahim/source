@@ -2,18 +2,19 @@ package com.example.chat;
 
 import org.simpleframework.xml.Element;
 
-import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Item implements Parcelable {
 
-	public Item() { ; };
-	
-	public Item(Parcel in) { 
+	public Item() {
+		;
+	};
+
+	public Item(Parcel in) {
 		readFromParcel(in);
 	}
-	
+
 	@Element
 	private String id;
 
@@ -120,27 +121,27 @@ public class Item implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		 dest.writeString(id);
-		 dest.writeString(title);
-		 dest.writeString(link);
-		 dest.writeString(description);
-		 dest.writeString(regPrice);
-		 dest.writeString(discPrice);
-		 dest.writeString(Price);
-		 dest.writeString(Percent);
-		 dest.writeString(Sold);
+		dest.writeString(id);
+		dest.writeString(title);
+		dest.writeString(link);
+		dest.writeString(description);
+		dest.writeString(regPrice);
+		dest.writeString(discPrice);
+		dest.writeString(Price);
+		dest.writeString(Percent);
+		dest.writeString(Sold);
 	}
 
 	private void readFromParcel(Parcel in) {
-		 id = in.readString();
-		 title = in.readString();
-		 link = in.readString();
-		 description = in.readString();
-		 regPrice = in.readString();
-		 discPrice = in.readString();
-		 Price = in.readString();
-		 Percent = in.readString();
-		 Sold = in.readString();
+		id = in.readString();
+		title = in.readString();
+		link = in.readString();
+		description = in.readString();
+		regPrice = in.readString();
+		discPrice = in.readString();
+		Price = in.readString();
+		Percent = in.readString();
+		Sold = in.readString();
 	}
 
 	@SuppressWarnings("rawtypes")

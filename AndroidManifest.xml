@@ -10,7 +10,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
-   
 
     <application
         android:allowBackup="true"
@@ -29,6 +28,10 @@
         <activity
             android:name="com.example.chat.ShowOffers"
             android:label="@string/title_activity_show_offers" >
+        </activity>
+        <activity
+            android:name="com.example.chat.ReadMoreActivity"
+            android:label="@string/title_activity_read_more" >
         </activity>
     </application>
 

@@ -23,5 +23,6 @@
     </string-array>
 
     <string name="title_activity_show_offers">ShowOffers</string>
+    <string name="title_activity_read_more">ReadMoreActivity</string>
 
 </resources>
