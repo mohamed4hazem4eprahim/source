@@ -49,6 +49,9 @@ public class ReadMore extends AsyncTask<Object, Void, String> {
 
 	private String getTelephone(String response) {
 		int tellStart = response.indexOf("ტელ");
+		if(tellStart==-1){
+			return "";
+		}
 		int startTag = 0;
 		int endTag = 0;
 		boolean temp1 = false;
@@ -76,6 +79,9 @@ public class ReadMore extends AsyncTask<Object, Void, String> {
 
 	private String getAddres(String response) {
 		int missStart = response.indexOf("მის:");
+		if(missStart==-1){
+			return "";
+		}
 		int startTag = 0;
 		int endTag = 0;
 		boolean temp1 = false;
@@ -94,7 +100,9 @@ public class ReadMore extends AsyncTask<Object, Void, String> {
 			}
 		}
 		String tagStart = response.substring(startTag, endTag + 1);
+		System.out.println(tagStart);
 		String tagEnd = tagStart.charAt(0) + "/" + tagStart.substring(1);
+		System.out.println(tagEnd);
 		int missEnd = response.indexOf(tagEnd, missStart);
 		String answer = response.substring(missStart, missEnd);
 		return answer;
