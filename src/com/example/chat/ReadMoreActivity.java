@@ -40,10 +40,21 @@ public class ReadMoreActivity extends Activity {
 		
 		ImageView image = (ImageView) findViewById(R.id.imageMore);
 		
+		image.getLayoutParams().height = 350;
+		image.getLayoutParams().width = 475;
+		
 		String parsedLink = ShowOffers.parsePictureLink(item.getDescription());
 		Drawable d = ShowOffers.LoadImageFromWebOperations(parsedLink);
 
 		image.setImageDrawable(d);
+		
+		TextView price = (TextView) findViewById(R.id.price_product);
+		price.setTypeface(type);
+		price.setText("ფასი: " + item.getPrice() + " ლარი");
+		
+		TextView sold = (TextView) findViewById(R.id.sold_quantity);
+		sold.setTypeface(type);
+		sold.setText("სულ გაიყიდა: " + item.getSold() + " ვაუჩერი");
 		
 		TextView addr = (TextView) findViewById(R.id.address);
 		addr.setTypeface(type);
