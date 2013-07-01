@@ -9,6 +9,7 @@ import com.example.chat.R;
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.Menu;
@@ -75,10 +76,12 @@ public class ShowOffers extends ListActivity {
 			if (convertView ==  null) convertView = View.inflate(ShowOffers.this, R.layout.list_item, null);
 			final Item item = (Item) getItem(position);
 			
-			TextView tv = (TextView) convertView.findViewById(R.id.text);
 			Typeface type = Typeface.createFromAsset(getAssets(), "fonts/sylfaen.ttf");
+			
+			TextView tv = (TextView) convertView.findViewById(R.id.text);
 			tv.setTypeface(type);
 			tv.setText(item.getTitle());
+			tv.setTextColor(Color.RED);
 			
 			String parsedLink = parsePictureLink(item.getDescription());
 			
@@ -86,6 +89,14 @@ public class ShowOffers extends ListActivity {
 			
 			ImageView iv = (ImageView) convertView.findViewById(R.id.image);
 			iv.setImageDrawable(d);
+			
+			TextView price = (TextView) convertView.findViewById(R.id.price);
+			price.setTypeface(type);
+			price.setText("   ფასი: " + item.getPrice() + " ლარი");
+			
+			TextView sold = (TextView) convertView.findViewById(R.id.sold);
+			sold.setTypeface(type);
+			sold.setText("   გაიყიდა: " + item.getSold() + " ვაუჩერი");
 			
 			Button button = (Button) convertView.findViewById(R.id.button);
 			button.setOnClickListener(new OnClickListener() {
@@ -97,7 +108,8 @@ public class ShowOffers extends ListActivity {
 					task.execute();
 				}
 			});
-			button.setText("Read More");
+			button.setTypeface(type);
+			button.setText("დეტალურად");
 			
 			return convertView;
 		}
