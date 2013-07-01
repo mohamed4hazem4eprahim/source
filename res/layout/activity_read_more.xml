@@ -13,8 +13,20 @@
 
     <ImageView
         android:id="@+id/imageMore"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/price_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="false" />
+    
+    <TextView
+        android:id="@+id/sold_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="false" />
     
     <TextView
         android:id="@+id/address"
