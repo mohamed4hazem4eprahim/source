@@ -69,7 +69,6 @@ public class ReadMore extends AsyncTask<Void, Void, Void> {
 		String tagEnd = tagStart.charAt(0) + "/" + tagStart.substring(1);
 		int missEnd = response.indexOf(tagEnd,tellStart);
 		String answer = response.substring(tellStart,missEnd);
-		System.out.println(telNumber);
 		return answer;
 		
 	}
