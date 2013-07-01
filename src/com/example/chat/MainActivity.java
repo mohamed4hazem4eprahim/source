@@ -33,11 +33,9 @@ public class MainActivity extends Activity {
 		editText1 = (EditText) findViewById(R.id.editText1);
 		button1 = (Button) findViewById(R.id.button1);
 		map = new HashMap<String, Object>();
-		
 		Typeface type = Typeface.createFromAsset(getAssets(), "fonts/sylfaen.ttf");
 		button1.setTypeface(type);
 		editText1.setTypeface(type);
-		
 		addListenerOnButton();
 	}
 

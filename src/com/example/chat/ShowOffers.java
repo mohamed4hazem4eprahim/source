@@ -9,6 +9,7 @@ import com.example.chat.R;
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
@@ -75,6 +76,8 @@ public class ShowOffers extends ListActivity {
 			final Item item = (Item) getItem(position);
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.text);
+			Typeface type = Typeface.createFromAsset(getAssets(), "fonts/sylfaen.ttf");
+			tv.setTypeface(type);
 			tv.setText(item.getTitle());
 			
 			String parsedLink = parsePictureLink(item.getDescription());
