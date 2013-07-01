@@ -122,7 +122,7 @@ public class ShowOffers extends ListActivity {
 		}
 	}
 
-	private static String parsePictureLink(String linkToParse) {
+	public static String parsePictureLink(String linkToParse) {
 		int linkStartIndex = 10;
 		int linkEndIndex = linkToParse.indexOf(".jpg") + 4;
 		String cut = linkToParse.substring(0, linkEndIndex);

@@ -2,7 +2,11 @@ package com.example.chat;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ReadMoreActivity extends Activity {
 
@@ -23,7 +27,31 @@ public class ReadMoreActivity extends Activity {
 	}
 
 	public void setMoreInfo(String v) {
+		int spaceIndex = v.indexOf(' ');
+		String address = v.substring(5, spaceIndex);
+		int phoneIndex = v.indexOf("tel=")+4;
+		String tel = v.substring(phoneIndex);
+		
+		Typeface type = Typeface.createFromAsset(getAssets(), "fonts/sylfaen.ttf");
+		
+		TextView title = (TextView) findViewById(R.id.title);
+		title.setTypeface(type);
+		title.setText(item.getTitle());
+		
+		ImageView image = (ImageView) findViewById(R.id.imageMore);
+		
+		String parsedLink = ShowOffers.parsePictureLink(item.getDescription());
+		Drawable d = ShowOffers.LoadImageFromWebOperations(parsedLink);
 
+		image.setImageDrawable(d);
+		
+		TextView addr = (TextView) findViewById(R.id.address);
+		addr.setTypeface(type);
+		addr.setText(address);
+		
+		TextView phone = (TextView) findViewById(R.id.phone);
+		phone.setTypeface(type);
+		phone.setText(tel);
 	}
 
 	@Override
